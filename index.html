@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CreatorLoop — The AI Content Creator Marketplace</title>
+<style>
+:root{--bg:#fbfaff;--surface:#fff;--ink:#16132b;--muted:#5d5a78;--line:#e6e3f5;--brand:#6c47ff;--brand2:#ff5ca8;--soft:#f1edff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0c1f;--surface:#171430;--ink:#f3f1ff;--muted:#a9a5c9;--line:#2b2750;--soft:#1f1b42}}
+:root[data-theme="dark"]{--bg:#0e0c1f;--surface:#171430;--ink:#f3f1ff;--muted:#a9a5c9;--line:#2b2750;--soft:#1f1b42}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-weight:800;letter-spacing:-.02em;font-size:18px}
+.logo span{color:var(--brand)}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:18px}
+nav a:hover{color:var(--ink)}
+@media(max-width:640px){nav .links a:not(.cta){display:none}}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff!important;padding:12px 22px;border-radius:999px;font-weight:600;text-decoration:none;font-size:15px}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)!important}
+section{padding:72px 0}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.03em;margin:0 0 18px}
+h2{font-size:clamp(26px,4vw,36px);letter-spacing:-.02em;margin:0 0 10px}
+.eyebrow{color:var(--brand);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.lead{color:var(--muted);font-size:18px;max-width:640px}
+.grad{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{padding-top:84px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:48px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.num{font-size:30px;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:30px}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+.alt{background:var(--soft)}
+.tabs{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;margin:24px 0}
+.tabs button{border:0;background:none;color:var(--muted);padding:9px 20px;border-radius:999px;font:600 14px inherit;cursor:pointer}
+.tabs button.on{background:var(--brand);color:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;counter-reset:s}
+.step{counter-increment:s;position:relative}
+.step:before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;margin-bottom:12px}
+.tbl{overflow-x:auto;margin-top:26px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.tl{border-left:2px solid var(--line);margin-top:28px;padding-left:22px}
+.tl div{margin-bottom:22px;position:relative}
+.tl div:before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--brand)}
+.tl b{display:block}
+.tl span{color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--brand);font-weight:600;margin:0 6px 6px 0}
+footer{padding:48px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+.cta-box{text-align:center;padding:48px 24px;border-radius:24px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+.cta-box p{opacity:.9;max-width:520px;margin:0 auto 22px}
+.cta-box .btn{background:#fff;color:var(--brand)!important}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><div class="logo">Creator<span>Loop</span></div>
+<div class="links"><a href="#demo">Live demo</a><a href="#problem">Problem</a><a href="#how">How it works</a><a href="#features">Features</a><a href="#model">Business</a><a href="#roadmap">Roadmap</a><a class="btn cta" href="#contact" style="margin-left:18px;padding:8px 16px;font-size:14px">Get in touch</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">AI Content Creator Marketplace</div>
+<h1>Where brands meet creators — <span class="grad">powered by AI.</span></h1>
+<p class="lead">CreatorLoop matches businesses with the right creators and AI tools in minutes, then automates briefs, drafts, approvals, licensing and payouts in one workspace.</p>
+<div class="row"><a class="btn" href="#demo">Try the live demo</a><a class="btn ghost" href="#how">See how it works</a><a class="btn ghost" href="#model">Business model</a></div>
+<div class="stats">
+<div class="card"><div class="num grad">10x</div><p>Faster brief-to-first-draft (target)</p></div>
+<div class="card"><div class="num grad">3 sides</div><p>Creators, brands and AI tools in one marketplace</p></div>
+<div class="card"><div class="num grad">100%</div><p>Content provenance and licence tracked</p></div>
+<div class="card"><div class="num grad">&lt;24h</div><p>Creator payouts after approval (target)</p></div>
+</div>
+</div></header>
+
+<section id="demo" class="alt"><div class="wrap"><div class="eyebrow">Live demo</div><h2>Try the marketplace</h2><p class="lead">Use “View as” (top right of the app) to switch between Brand and Creator and walk through the full flow.</p><div style="margin:16px 0"><button class="btn" id="fs" style="border:0;cursor:pointer;font:inherit;font-weight:600">Full screen</button></div><iframe id="demoFrame" title="CreatorLoop live demo" style="width:100%;height:820px;border:1px solid var(--line);border-radius:16px;background:var(--bg)" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, viewport-fit=cover&quot;&gt;
+&lt;title&gt;CreatorLoop — AI Content Creator Marketplace&lt;/title&gt;
+&lt;style&gt;
+:root{--bg:#fbfaff;--surface:#fff;--ink:#16132b;--muted:#5d5a78;--line:#e6e3f5;--brand:#6c47ff;--brand2:#ff5ca8;--soft:#f1edff;--ok:#12805c;--warn:#b45309;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=&quot;light&quot;]){--bg:#0e0c1f;--surface:#171430;--ink:#f3f1ff;--muted:#a9a5c9;--line:#2b2750;--soft:#1f1b42;--ok:#34d399;--warn:#fbbf24}}
+:root[data-theme=&quot;dark&quot;]{--bg:#0e0c1f;--surface:#171430;--ink:#f3f1ff;--muted:#a9a5c9;--line:#2b2750;--soft:#1f1b42;--ok:#34d399;--warn:#fbbf24}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,&quot;Segoe UI&quot;,Roboto,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+.bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0}
+.logo{font-weight:800;font-size:18px;letter-spacing:-.02em}.logo span{color:var(--brand)}
+.tabs{display:flex;gap:4px;overflow-x:auto;flex:1}
+.tabs button{border:0;background:none;color:var(--muted);padding:8px 14px;border-radius:999px;font:600 14px system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--soft);color:var(--brand)}
+.who{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+select,input,textarea{font:14px system-ui,sans-serif;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px;max-width:100%}
+textarea{width:100%;min-height:60px}
+.btn{border:0;cursor:pointer;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;padding:9px 16px;border-radius:999px;font:600 14px system-ui,sans-serif}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--ink)}
+.btn.sm{padding:6px 12px;font-size:13px}
+main{padding:22px 0 60px}
+h1{font-size:clamp(28px,5vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:22px;margin:0 0 4px;letter-spacing:-.01em}
+.grad{background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:14px}
+.grid .card{margin:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sp{justify-content:space-between}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--soft);color:var(--brand);font-weight:600;margin:2px 4px 2px 0}
+.badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--soft);color:var(--brand)}
+.badge.ok{color:var(--ok)}.badge.warn{color:var(--warn)}
+.av{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:22px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:26px 0}
+.num{font-size:26px;font-weight:800}
+.panel{border-top:1px dashed var(--line);margin-top:12px;padding-top:12px}
+.f{display:grid;gap:8px;margin-top:8px}
+.f.two{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.bar2{height:6px;border-radius:6px;background:var(--line);overflow:hidden;width:90px}
+.bar2 i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2))}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:9;max-width:90%}
+#toast.on{opacity:1}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px 0 40px}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;&lt;div class=&quot;wrap&quot;&gt;&lt;div class=&quot;bar&quot;&gt;
+&lt;div class=&quot;logo&quot;&gt;Creator&lt;span&gt;Loop&lt;/span&gt;&lt;/div&gt;
+&lt;nav class=&quot;tabs&quot; id=&quot;tabs&quot;&gt;&lt;/nav&gt;
+&lt;div class=&quot;who&quot;&gt;&lt;span&gt;View as&lt;/span&gt;&lt;select id=&quot;roleSel&quot;&gt;&lt;option value=&quot;brand&quot;&gt;Brand&lt;/option&gt;&lt;option value=&quot;creator&quot;&gt;Creator&lt;/option&gt;&lt;/select&gt;&lt;select id=&quot;meSel&quot;&gt;&lt;/select&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/header&gt;
+&lt;main&gt;&lt;div class=&quot;wrap&quot; id=&quot;app&quot;&gt;&lt;/div&gt;&lt;/main&gt;
+&lt;footer&gt;Demo build · data is saved in your browser · &lt;a href=&quot;#&quot; data-act=&quot;reset&quot; style=&quot;color:var(--brand)&quot;&gt;Reset demo data&lt;/a&gt;&lt;/footer&gt;
+&lt;div id=&quot;toast&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+var K=&quot;creatorloop_demo_v1&quot;,S,view=&quot;home&quot;,OPEN={};
+function seed(){return{role:&quot;brand&quot;,me:&quot;c1&quot;,next:100,
+creators:[
+{id:&quot;c1&quot;,name:&quot;Aria Chen&quot;,emoji:&quot;🎬&quot;,headline:&quot;Short-form video editor&quot;,skills:[&quot;video editing&quot;,&quot;short-form&quot;,&quot;tiktok&quot;,&quot;reels&quot;],rate:400,rating:4.9,reviews:42},
+{id:&quot;c2&quot;,name:&quot;Marcus Lee&quot;,emoji:&quot;✍️&quot;,headline:&quot;SEO writer for SaaS&quot;,skills:[&quot;seo&quot;,&quot;blog&quot;,&quot;copywriting&quot;,&quot;saas&quot;],rate:250,rating:4.7,reviews:31},
+{id:&quot;c3&quot;,name:&quot;Priya Nair&quot;,emoji:&quot;🎨&quot;,headline:&quot;Ad creative designer&quot;,skills:[&quot;ad creatives&quot;,&quot;design&quot;,&quot;social media&quot;,&quot;branding&quot;],rate:350,rating:4.8,reviews:27},
+{id:&quot;c4&quot;,name:&quot;Diego Alvarez&quot;,emoji:&quot;🎙️&quot;,headline:&quot;Podcast producer &amp; voiceover&quot;,skills:[&quot;podcast&quot;,&quot;voiceover&quot;,&quot;audio&quot;,&quot;editing&quot;],rate:300,rating:4.6,reviews:19},
+{id:&quot;c5&quot;,name:&quot;Sofia Rossi&quot;,emoji:&quot;📸&quot;,headline:&quot;Product photographer&quot;,skills:[&quot;photography&quot;,&quot;product&quot;,&quot;ecommerce&quot;,&quot;retouching&quot;],rate:450,rating:4.9,reviews:38},
+{id:&quot;c6&quot;,name:&quot;Kenji Tanaka&quot;,emoji:&quot;📝&quot;,headline:&quot;Scripts, newsletters &amp; brand copy&quot;,skills:[&quot;scriptwriting&quot;,&quot;newsletters&quot;,&quot;copywriting&quot;,&quot;brand voice&quot;],rate:200,rating:4.5,reviews:15}],
+briefs:[
+{id:&quot;b1&quot;,title:&quot;30-second launch reel for a fitness app&quot;,desc:&quot;Energetic vertical video with captions for TikTok and Reels.&quot;,category:&quot;Video&quot;,tags:[&quot;short-form&quot;,&quot;video editing&quot;,&quot;tiktok&quot;],budget:500,status:&quot;open&quot;},
+{id:&quot;b2&quot;,title:&quot;SEO blog series for a B2B SaaS tool&quot;,desc:&quot;Four 1,200-word articles with keyword research.&quot;,category:&quot;Writing&quot;,tags:[&quot;seo&quot;,&quot;blog&quot;,&quot;saas&quot;],budget:600,status:&quot;open&quot;},
+{id:&quot;b3&quot;,title:&quot;Product photos for a skincare line&quot;,desc:&quot;12 clean e-commerce shots, white background plus lifestyle.&quot;,category:&quot;Photography&quot;,tags:[&quot;photography&quot;,&quot;product&quot;,&quot;ecommerce&quot;],budget:800,status:&quot;open&quot;}],
+proposals:[
+{id:&quot;p1&quot;,briefId:&quot;b1&quot;,creatorId:&quot;c1&quot;,price:450,pitch:&quot;I can deliver a punchy 30s reel with captions in 3 days.&quot;,status:&quot;pending&quot;},
+{id:&quot;p2&quot;,briefId:&quot;b2&quot;,creatorId:&quot;c2&quot;,price:520,pitch:&quot;Four optimised articles with a keyword brief included.&quot;,status:&quot;pending&quot;}],
+projects:[]}}
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(!S)S=seed();
+function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function $(i){return document.getElementById(i)}
+function esc(t){return String(t==null?&quot;&quot;:t).replace(/[&amp;&lt;&gt;&quot;&#x27;]/g,function(c){return{&quot;&amp;&quot;:&quot;&amp;amp;&quot;,&quot;&lt;&quot;:&quot;&amp;lt;&quot;,&quot;&gt;&quot;:&quot;&amp;gt;&quot;,&#x27;&quot;&#x27;:&quot;&amp;quot;&quot;,&quot;&#x27;&quot;:&quot;&amp;#39;&quot;}[c]})}
+function $$(n){return&quot;$&quot;+Number(n).toLocaleString()}
+function cr(id){return S.creators.find(function(c){return c.id===id})}
+function br(id){return S.briefs.find(function(b){return b.id===id})}
+function toast(m){var t=$(&quot;toast&quot;);t.textContent=m;t.className=&quot;on&quot;;clearTimeout(toast.h);toast.h=setTimeout(function(){t.className=&quot;&quot;},2400)}
+function uid(p){return p+(S.next++)}
+function score(c,b){var want=b.tags.map(function(t){return t.toLowerCase()}),ov=want.filter(function(t){return c.skills.indexOf(t)&gt;-1}).length;
+var s=want.length?60*ov/want.length:0,bud=c.rate&lt;=b.budget?25:25*b.budget/c.rate;return Math.round((s+bud+15*c.rating/5)*10)/10}
+function tags(a){return a.map(function(t){return&#x27;&lt;span class=&quot;tag&quot;&gt;&#x27;+esc(t)+&quot;&lt;/span&gt;&quot;}).join(&quot;&quot;)}
+var NAV=[[&quot;home&quot;,&quot;Home&quot;],[&quot;creators&quot;,&quot;Creators&quot;],[&quot;briefs&quot;,&quot;Briefs&quot;],[&quot;projects&quot;,&quot;Projects&quot;]];
+
+function render(){
+$(&quot;tabs&quot;).innerHTML=NAV.map(function(n){return&#x27;&lt;button data-act=&quot;go&quot; data-id=&quot;&#x27;+n[0]+&#x27;&quot; class=&quot;&#x27;+(view===n[0]?&quot;on&quot;:&quot;&quot;)+&#x27;&quot;&gt;&#x27;+n[1]+&quot;&lt;/button&gt;&quot;}).join(&quot;&quot;);
+$(&quot;roleSel&quot;).value=S.role;
+$(&quot;meSel&quot;).style.display=S.role===&quot;creator&quot;?&quot;&quot;:&quot;none&quot;;
+$(&quot;meSel&quot;).innerHTML=S.creators.map(function(c){return&#x27;&lt;option value=&quot;&#x27;+c.id+&#x27;&quot;&#x27;+(c.id===S.me?&quot; selected&quot;:&quot;&quot;)+&quot;&gt;&quot;+esc(c.name)+&quot;&lt;/option&gt;&quot;}).join(&quot;&quot;);
+$(&quot;app&quot;).innerHTML=({home:vHome,creators:vCreators,briefs:vBriefs,projects:vProjects})[view]();
+if(view===&quot;creators&quot;)list();
+}
+function vHome(){
+var open=S.briefs.filter(function(b){return b.status===&quot;open&quot;}).length,esc_=S.projects.filter(function(p){return p.status!==&quot;approved&quot;}).reduce(function(a,p){return a+p.amount},0),paid=S.projects.filter(function(p){return p.status===&quot;approved&quot;}).reduce(function(a,p){return a+p.amount-p.fee},0);
+return&#x27;&lt;h1&gt;Where brands meet creators — &lt;span class=&quot;grad&quot;&gt;powered by AI.&lt;/span&gt;&lt;/h1&gt;&lt;p class=&quot;muted&quot; style=&quot;max-width:600px;font-size:17px&quot;&gt;Post a brief, get AI-ranked creator matches, fund escrow, review work with clear AI-use disclosure, and release payment on approval.&lt;/p&gt;&#x27;+
+&#x27;&lt;div class=&quot;row&quot; style=&quot;margin-top:16px&quot;&gt;&lt;button class=&quot;btn&quot; data-act=&quot;go&quot; data-id=&quot;briefs&quot;&gt;&#x27;+(S.role===&quot;brand&quot;?&quot;Post a brief&quot;:&quot;Find work&quot;)+&#x27;&lt;/button&gt;&lt;button class=&quot;btn ghost&quot; data-act=&quot;go&quot; data-id=&quot;creators&quot;&gt;Browse creators&lt;/button&gt;&lt;/div&gt;&#x27;+
+&#x27;&lt;div class=&quot;stats&quot;&gt;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;num grad&quot;&gt;&#x27;+S.creators.length+&#x27;&lt;/div&gt;&lt;span class=&quot;muted&quot;&gt;Creators&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;num grad&quot;&gt;&#x27;+open+&#x27;&lt;/div&gt;&lt;span class=&quot;muted&quot;&gt;Open briefs&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;num grad&quot;&gt;&#x27;+$$(esc_)+&#x27;&lt;/div&gt;&lt;span class=&quot;muted&quot;&gt;In escrow&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;num grad&quot;&gt;&#x27;+$$(paid)+&#x27;&lt;/div&gt;&lt;span class=&quot;muted&quot;&gt;Paid to creators&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&#x27;+
+&#x27;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;Try the full flow&lt;/h2&gt;&lt;ol class=&quot;muted&quot; style=&quot;margin:8px 0 0;padding-left:20px&quot;&gt;&lt;li&gt;As &lt;b&gt;Brand&lt;/b&gt;: open Briefs, click “AI matches”, then accept a proposal.&lt;/li&gt;&lt;li&gt;Switch “View as” to &lt;b&gt;Creator&lt;/b&gt; (the chosen creator) and submit work in Projects.&lt;/li&gt;&lt;li&gt;Switch back to &lt;b&gt;Brand&lt;/b&gt; to approve, release payment and leave a review.&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&#x27;}
+function vCreators(){return&#x27;&lt;h2&gt;Creators&lt;/h2&gt;&lt;p class=&quot;muted&quot; style=&quot;margin:0 0 10px&quot;&gt;Search by skill or name.&lt;/p&gt;&lt;input id=&quot;q&quot; placeholder=&quot;e.g. video, seo, photography&quot; style=&quot;width:100%;max-width:360px&quot;&gt;&lt;div class=&quot;grid&quot; id=&quot;clist&quot;&gt;&lt;/div&gt;&#x27;}
+function list(){var q=($(&quot;q&quot;)||{value:&quot;&quot;}).value.toLowerCase(),a=S.creators.filter(function(c){return!q||(c.name+&quot; &quot;+c.headline+&quot; &quot;+c.skills.join(&quot; &quot;)).toLowerCase().indexOf(q)&gt;-1});
+$(&quot;clist&quot;).innerHTML=a.map(function(c){return&#x27;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;row&quot;&gt;&lt;div class=&quot;av&quot;&gt;&#x27;+c.emoji+&#x27;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&#x27;+esc(c.name)+&#x27;&lt;/b&gt;&lt;div class=&quot;muted&quot; style=&quot;font-size:13px&quot;&gt;&#x27;+esc(c.headline)+&#x27;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;margin:10px 0&quot;&gt;&#x27;+tags(c.skills)+&#x27;&lt;/div&gt;&lt;div class=&quot;row sp&quot;&gt;&lt;span&gt;⭐ &#x27;+c.rating.toFixed(1)+&#x27; &lt;span class=&quot;muted&quot;&gt;(&#x27;+c.reviews+&#x27;)&lt;/span&gt;&lt;/span&gt;&lt;b&gt;&#x27;+$$(c.rate)+&#x27;&lt;span class=&quot;muted&quot; style=&quot;font-weight:400&quot;&gt;/project&lt;/span&gt;&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}).join(&quot;&quot;)||&#x27;&lt;p class=&quot;muted&quot;&gt;No creators found.&lt;/p&gt;&#x27;}
+function postForm(){return&#x27;&lt;div class=&quot;card&quot;&gt;&lt;h2&gt;Post a brief&lt;/h2&gt;&lt;div class=&quot;f two&quot;&gt;&lt;input id=&quot;nt&quot; placeholder=&quot;Title&quot;&gt;&lt;select id=&quot;nc&quot;&gt;&lt;option&gt;Video&lt;/option&gt;&lt;option&gt;Writing&lt;/option&gt;&lt;option&gt;Design&lt;/option&gt;&lt;option&gt;Photography&lt;/option&gt;&lt;option&gt;Audio&lt;/option&gt;&lt;option&gt;Social media&lt;/option&gt;&lt;/select&gt;&lt;input id=&quot;ng&quot; placeholder=&quot;Skills, comma separated&quot;&gt;&lt;input id=&quot;nb&quot; type=&quot;number&quot; min=&quot;1&quot; placeholder=&quot;Budget ($)&quot;&gt;&lt;/div&gt;&lt;div class=&quot;f&quot;&gt;&lt;textarea id=&quot;nd&quot; placeholder=&quot;Describe what you need&quot;&gt;&lt;/textarea&gt;&lt;div&gt;&lt;button class=&quot;btn&quot; data-act=&quot;post&quot;&gt;Publish brief&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}
+function vBriefs(){var brand=S.role===&quot;brand&quot;;
+return(brand?postForm():&quot;&quot;)+&#x27;&lt;h2 style=&quot;margin:6px 0 10px&quot;&gt;&#x27;+(brand?&quot;Your briefs&quot;:&quot;Open briefs&quot;)+&quot;&lt;/h2&gt;&quot;+S.briefs.slice().reverse().map(function(b){
+var ps=S.proposals.filter(function(p){return p.briefId===b.id}),h=&#x27;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;row sp&quot;&gt;&lt;b style=&quot;font-size:17px&quot;&gt;&#x27;+esc(b.title)+&#x27;&lt;/b&gt;&lt;span class=&quot;badge &#x27;+(b.status===&quot;open&quot;?&quot;ok&quot;:&quot;&quot;)+&#x27;&quot;&gt;&#x27;+b.status.replace(&quot;_&quot;,&quot; &quot;)+&#x27;&lt;/span&gt;&lt;/div&gt;&lt;p class=&quot;muted&quot; style=&quot;margin:6px 0&quot;&gt;&#x27;+esc(b.desc)+&#x27;&lt;/p&gt;&lt;div class=&quot;row sp&quot;&gt;&lt;div&gt;&#x27;+tags(b.tags)+&#x27;&lt;/div&gt;&lt;b&gt;Budget &#x27;+$$(b.budget)+&quot;&lt;/b&gt;&lt;/div&gt;&quot;;
+if(brand){h+=&#x27;&lt;div class=&quot;row&quot; style=&quot;margin-top:10px&quot;&gt;&lt;button class=&quot;btn sm ghost&quot; data-act=&quot;tog&quot; data-id=&quot;m&#x27;+b.id+&#x27;&quot;&gt;✨ AI matches&lt;/button&gt;&lt;button class=&quot;btn sm ghost&quot; data-act=&quot;tog&quot; data-id=&quot;p&#x27;+b.id+&#x27;&quot;&gt;Proposals (&#x27;+ps.length+&quot;)&lt;/button&gt;&lt;/div&gt;&quot;;
+if(OPEN[&quot;m&quot;+b.id])h+=&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;b&gt;Ranked by AI match score&lt;/b&gt;&#x27;+S.creators.map(function(c){return{c:c,s:score(c,b)}}).sort(function(x,y){return y.s-x.s}).slice(0,4).map(function(m){return&#x27;&lt;div class=&quot;row sp&quot; style=&quot;margin-top:8px&quot;&gt;&lt;span&gt;&#x27;+m.c.emoji+&quot; &quot;+esc(m.c.name)+&#x27; &lt;span class=&quot;muted&quot;&gt;· &#x27;+$$(m.c.rate)+&#x27;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;row&quot;&gt;&lt;span class=&quot;bar2&quot;&gt;&lt;i style=&quot;width:&#x27;+Math.min(100,m.s)+&#x27;%&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;b&gt;&#x27;+m.s+&quot;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&quot;}).join(&quot;&quot;)+&quot;&lt;/div&gt;&quot;;
+if(OPEN[&quot;p&quot;+b.id])h+=&#x27;&lt;div class=&quot;panel&quot;&gt;&#x27;+(ps.length?ps.map(function(p){var c=cr(p.creatorId);return&#x27;&lt;div class=&quot;row sp&quot; style=&quot;margin-bottom:8px&quot;&gt;&lt;span&gt;&lt;b&gt;&#x27;+esc(c.name)+&#x27;&lt;/b&gt; · &#x27;+$$(p.price)+&#x27;&lt;div class=&quot;muted&quot; style=&quot;font-size:13px&quot;&gt;&#x27;+esc(p.pitch)+&#x27;&lt;/div&gt;&lt;/span&gt;&#x27;+(p.status===&quot;pending&quot;&amp;&amp;b.status===&quot;open&quot;?&#x27;&lt;button class=&quot;btn sm&quot; data-act=&quot;accept&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Accept &amp;amp; fund escrow&lt;/button&gt;&#x27;:&#x27;&lt;span class=&quot;badge&quot;&gt;&#x27;+p.status+&quot;&lt;/span&gt;&quot;)+&quot;&lt;/div&gt;&quot;}).join(&quot;&quot;):&#x27;&lt;span class=&quot;muted&quot;&gt;No proposals yet.&lt;/span&gt;&#x27;)+&quot;&lt;/div&gt;&quot;}
+else if(b.status===&quot;open&quot;){var mine=ps.find(function(p){return p.creatorId===S.me});
+h+=mine?&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;span class=&quot;badge ok&quot;&gt;Proposal sent · &#x27;+$$(mine.price)+&quot;&lt;/span&gt;&lt;/div&gt;&quot;:&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;div class=&quot;f two&quot;&gt;&lt;input id=&quot;pp&#x27;+b.id+&#x27;&quot; type=&quot;number&quot; min=&quot;1&quot; placeholder=&quot;Your price ($)&quot; value=&quot;&#x27;+Math.round(b.budget*0.9)+&#x27;&quot;&gt;&lt;input id=&quot;pt&#x27;+b.id+&#x27;&quot; placeholder=&quot;Short pitch&quot;&gt;&lt;/div&gt;&lt;div style=&quot;margin-top:8px&quot;&gt;&lt;button class=&quot;btn sm&quot; data-act=&quot;propose&quot; data-id=&quot;&#x27;+b.id+&#x27;&quot;&gt;Send proposal&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&#x27;}
+return h+&quot;&lt;/div&gt;&quot;}).join(&quot;&quot;)}
+var ST={funded:[&quot;Escrow funded&quot;,&quot;warn&quot;],submitted:[&quot;Awaiting review&quot;,&quot;warn&quot;],revision:[&quot;Revision requested&quot;,&quot;warn&quot;],approved:[&quot;Paid out&quot;,&quot;ok&quot;]};
+function vProjects(){var brand=S.role===&quot;brand&quot;,a=S.projects.filter(function(p){return brand||p.creatorId===S.me});
+if(!a.length)return&#x27;&lt;h2&gt;Projects&lt;/h2&gt;&lt;div class=&quot;card muted&quot;&gt;No projects yet. &#x27;+(brand?&quot;Accept a proposal on a brief to start one.&quot;:&quot;Send proposals on open briefs — a brand must accept one first.&quot;)+&quot;&lt;/div&gt;&quot;;
+return&quot;&lt;h2&gt;Projects&lt;/h2&gt;&quot;+a.slice().reverse().map(function(p){var c=cr(p.creatorId),b=br(p.briefId),s=ST[p.status],h=&#x27;&lt;div class=&quot;card&quot;&gt;&lt;div class=&quot;row sp&quot;&gt;&lt;b&gt;&#x27;+esc(b.title)+&#x27;&lt;/b&gt;&lt;span class=&quot;badge &#x27;+s[1]+&#x27;&quot;&gt;&#x27;+s[0]+&#x27;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;muted&quot; style=&quot;margin:4px 0&quot;&gt;Creator: &#x27;+esc(c.name)+&quot; · Escrow &quot;+$$(p.amount)+&quot; · Fee &quot;+$$(p.fee)+&quot;&lt;/div&gt;&quot;;
+if(p.url)h+=&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;div&gt;Deliverable: &lt;b&gt;&#x27;+esc(p.url)+&#x27;&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;margin-top:4px&quot;&gt;&#x27;+(p.ai?&#x27;&lt;span class=&quot;badge warn&quot;&gt;AI-assisted&lt;/span&gt; &lt;span class=&quot;muted&quot;&gt;&#x27;+esc(p.aiNote)+&quot;&lt;/span&gt;&quot;:&#x27;&lt;span class=&quot;badge ok&quot;&gt;Human-made&lt;/span&gt;&#x27;)+&quot;&lt;/div&gt;&lt;/div&gt;&quot;;
+if(p.note&amp;&amp;p.status===&quot;revision&quot;)h+=&#x27;&lt;div class=&quot;panel muted&quot;&gt;Feedback: &#x27;+esc(p.note)+&quot;&lt;/div&gt;&quot;;
+if(!brand&amp;&amp;(p.status===&quot;funded&quot;||p.status===&quot;revision&quot;))h+=&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;div class=&quot;f&quot;&gt;&lt;input id=&quot;su&#x27;+p.id+&#x27;&quot; placeholder=&quot;Deliverable link (Drive, YouTube…)&quot;&gt;&lt;label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sa&#x27;+p.id+&#x27;&quot;&gt; AI tools were used&lt;/label&gt;&lt;input id=&quot;sn&#x27;+p.id+&#x27;&quot; placeholder=&quot;Which AI tools and how? (required if used)&quot;&gt;&lt;div&gt;&lt;button class=&quot;btn sm&quot; data-act=&quot;submit&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Submit work&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+if(brand&amp;&amp;p.status===&quot;submitted&quot;)h+=&#x27;&lt;div class=&quot;panel&quot;&gt;&lt;div class=&quot;f&quot;&gt;&lt;input id=&quot;rn&#x27;+p.id+&#x27;&quot; placeholder=&quot;Feedback (if requesting a revision)&quot;&gt;&lt;div class=&quot;row&quot;&gt;&lt;button class=&quot;btn sm ghost&quot; data-act=&quot;revise&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Request revision&lt;/button&gt;&lt;button class=&quot;btn sm&quot; data-act=&quot;approve&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Approve &amp;amp; release payment&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#x27;;
+if(p.status===&quot;approved&quot;){h+=&#x27;&lt;div class=&quot;panel&quot;&gt;💸 Creator payout: &lt;b&gt;&#x27;+$$(p.amount-p.fee)+&quot;&lt;/b&gt; · Platform fee: &quot;+$$(p.fee);
+if(brand&amp;&amp;!p.reviewed)h+=&#x27;&lt;div class=&quot;row&quot; style=&quot;margin-top:8px&quot;&gt;&lt;select id=&quot;rv&#x27;+p.id+&#x27;&quot;&gt;&lt;option&gt;5&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;1&lt;/option&gt;&lt;/select&gt;&lt;button class=&quot;btn sm ghost&quot; data-act=&quot;review&quot; data-id=&quot;&#x27;+p.id+&#x27;&quot;&gt;Rate creator&lt;/button&gt;&lt;/div&gt;&#x27;;else if(p.reviewed)h+=&#x27; · &lt;span class=&quot;badge ok&quot;&gt;Reviewed&lt;/span&gt;&#x27;;h+=&quot;&lt;/div&gt;&quot;}
+return h+&quot;&lt;/div&gt;&quot;}).join(&quot;&quot;)}
+
+document.addEventListener(&quot;click&quot;,function(e){var t=e.target.closest(&quot;[data-act]&quot;);if(!t)return;e.preventDefault();var a=t.dataset.act,id=t.dataset.id,v=function(i){var x=$(i);return x?x.value.trim():&quot;&quot;};
+if(a===&quot;go&quot;){view=id}
+else if(a===&quot;tog&quot;){OPEN[id]=!OPEN[id]}
+else if(a===&quot;reset&quot;){S=seed();OPEN={};view=&quot;home&quot;;toast(&quot;Demo data reset&quot;)}
+else if(a===&quot;post&quot;){var tt=v(&quot;nt&quot;),bg=Number(v(&quot;nb&quot;)),tg=v(&quot;ng&quot;).split(&quot;,&quot;).map(function(x){return x.trim().toLowerCase()}).filter(Boolean);if(!tt||!(bg&gt;0)){toast(&quot;Add a title and a budget&quot;);return}
+S.briefs.push({id:uid(&quot;b&quot;),title:tt,desc:v(&quot;nd&quot;),category:v(&quot;nc&quot;),tags:tg,budget:bg,status:&quot;open&quot;});toast(&quot;Brief published&quot;)}
+else if(a===&quot;propose&quot;){var pr=Number(v(&quot;pp&quot;+id));if(!(pr&gt;0)){toast(&quot;Enter a price&quot;);return}S.proposals.push({id:uid(&quot;p&quot;),briefId:id,creatorId:S.me,price:pr,pitch:v(&quot;pt&quot;+id)||&quot;Happy to help!&quot;,status:&quot;pending&quot;});toast(&quot;Proposal sent&quot;)}
+else if(a===&quot;accept&quot;){var p=S.proposals.find(function(x){return x.id===id});S.proposals.forEach(function(x){if(x.briefId===p.briefId)x.status=x.id===id?&quot;accepted&quot;:&quot;rejected&quot;});br(p.briefId).status=&quot;in_progress&quot;;
+S.projects.push({id:uid(&quot;j&quot;),briefId:p.briefId,creatorId:p.creatorId,amount:p.price,fee:Math.round(p.price*10)/100,status:&quot;funded&quot;});toast(&quot;Escrow funded — project started&quot;);view=&quot;projects&quot;}
+else if(a===&quot;submit&quot;){var u=v(&quot;su&quot;+id),ai=$(&quot;sa&quot;+id).checked,n=v(&quot;sn&quot;+id);if(!u){toast(&quot;Add a deliverable link&quot;);return}if(ai&amp;&amp;!n){toast(&quot;Describe the AI tools used&quot;);return}
+var j=S.projects.find(function(x){return x.id===id});j.url=u;j.ai=ai;j.aiNote=n;j.status=&quot;submitted&quot;;toast(&quot;Work submitted&quot;)}
+else if(a===&quot;revise&quot;){var j2=S.projects.find(function(x){return x.id===id});j2.status=&quot;revision&quot;;j2.note=v(&quot;rn&quot;+id)||&quot;Please revise.&quot;;toast(&quot;Revision requested&quot;)}
+else if(a===&quot;approve&quot;){var j3=S.projects.find(function(x){return x.id===id});j3.status=&quot;approved&quot;;br(j3.briefId).status=&quot;closed&quot;;toast(&quot;Payment released to creator&quot;)}
+else if(a===&quot;review&quot;){var j4=S.projects.find(function(x){return x.id===id}),r=Number(v(&quot;rv&quot;+id)),c=cr(j4.creatorId);c.rating=(c.rating*c.reviews+r)/(c.reviews+1);c.reviews++;j4.reviewed=true;toast(&quot;Thanks for rating&quot;)}
+save();render()});
+$(&quot;roleSel&quot;).addEventListener(&quot;change&quot;,function(){S.role=this.value;if(view===&quot;projects&quot;||view===&quot;briefs&quot;){}save();render()});
+$(&quot;meSel&quot;).addEventListener(&quot;change&quot;,function(){S.me=this.value;save();render()});
+document.addEventListener(&quot;input&quot;,function(e){if(e.target.id===&quot;q&quot;)list()});
+render();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe></div></section>
+
+<section id="problem"><div class="wrap">
+<div class="eyebrow">The problem</div><h2>Content demand is exploding. The workflow is broken.</h2>
+<div class="grid">
+<div class="card"><div class="ico">🔍</div><h3>Hard to find talent</h3><p>Brands waste weeks searching agencies and social profiles with no reliable quality signals.</p></div>
+<div class="card"><div class="ico">⏳</div><h3>Slow, manual process</h3><p>Briefs, revisions and approvals scatter across email, chat and spreadsheets.</p></div>
+<div class="card"><div class="ico">⚖️</div><h3>Unclear AI &amp; rights</h3><p>Who owns AI-assisted work? Disclosure and licensing are inconsistent and risky.</p></div>
+<div class="card"><div class="ico">💸</div><h3>Creators underpaid</h3><p>Independent creators lose time to admin, late payments and weak discovery.</p></div>
+</div></div></section>
+
+<section id="how" class="alt"><div class="wrap">
+<div class="eyebrow">How it works</div><h2>One loop for both sides</h2>
+<div class="tabs" role="tablist"><button class="on" data-t="brand">For Brands</button><button data-t="creator">For Creators</button></div>
+<div class="steps" id="steps"></div>
+</div></section>
+
+<section id="features"><div class="wrap">
+<div class="eyebrow">Platform features</div><h2>Built for trust, speed and quality</h2>
+<div class="grid">
+<div class="card"><div class="ico">🤝</div><h3>AI matchmaking</h3><p>Ranks creators by style, audience fit, past results and budget.</p></div>
+<div class="card"><div class="ico">📝</div><h3>Smart briefs</h3><p>Turns a one-line goal into a structured brief with deliverables and tone.</p></div>
+<div class="card"><div class="ico">🎨</div><h3>AI co-creation studio</h3><p>Creators generate drafts, variants and edits with integrated AI tools.</p></div>
+<div class="card"><div class="ico">🛡️</div><h3>Provenance &amp; licensing</h3><p>Every asset carries an AI-use label, usage rights and an audit trail.</p></div>
+<div class="card"><div class="ico">✅</div><h3>Review &amp; approval</h3><p>In-context feedback, version history and brand-safety checks.</p></div>
+<div class="card"><div class="ico">💳</div><h3>Escrow payments</h3><p>Funds held securely, released on approval, with fast payouts.</p></div>
+</div></div></section>
+
+<section class="alt"><div class="wrap">
+<div class="eyebrow">What you can order</div><h2>Content categories</h2>
+<div style="margin-top:20px">
+<span class="tag">Short-form video</span><span class="tag">Blog &amp; SEO articles</span><span class="tag">Social media packs</span><span class="tag">Ad creatives</span><span class="tag">Product photography</span><span class="tag">Podcasts &amp; voiceover</span><span class="tag">Newsletters</span><span class="tag">Brand copy &amp; scripts</span>
+</div></div></section>
+
+<section id="model"><div class="wrap">
+<div class="eyebrow">Business model</div><h2>Multiple, compounding revenue streams</h2>
+<div class="tbl"><table>
+<thead><tr><th>Stream</th><th>Who pays</th><th>How</th></tr></thead>
+<tbody>
+<tr><td>Marketplace commission</td><td>Brands &amp; creators</td><td>Percentage fee per completed project</td></tr>
+<tr><td>Pro subscriptions</td><td>Creators</td><td>Monthly plan: AI studio credits, analytics, priority listing</td></tr>
+<tr><td>Brand workspace plans</td><td>Brands / agencies</td><td>Seats, team workflows, brand-safety tools</td></tr>
+<tr><td>AI tool partnerships</td><td>AI vendors</td><td>Revenue share on tool usage inside the studio</td></tr>
+</tbody></table></div>
+<p style="color:var(--muted);font-size:14px;margin-top:14px">Figures and fee levels are to be finalised with market validation.</p>
+</div></section>
+
+<section id="roadmap" class="alt"><div class="wrap">
+<div class="eyebrow">Roadmap</div><h2>From prototype to platform</h2>
+<div class="tl">
+<div><b>Phase 1 — Prototype</b><span>Core marketplace: profiles, briefs, matching, messaging.</span></div>
+<div><b>Phase 2 — Pilot</b><span>Onboard early creators and brands; add AI studio and escrow.</span></div>
+<div><b>Phase 3 — Launch</b><span>Provenance labels, analytics, public launch and partnerships.</span></div>
+<div><b>Phase 4 — Scale</b><span>API, agency tools, international and multilingual markets.</span></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap">
+<div class="cta-box"><h2>Let's build the future of content together</h2>
+<p>We're looking for pilot brands, creators, AI partners and mentors.</p>
+<a class="btn" href="mailto:hello@creatorloop.example">hello@creatorloop.example</a></div>
+</div></section>
+<footer><div class="wrap">© 2026 CreatorLoop · AI Content Creator Marketplace · Project presentation</div></footer>
+
+<script>
+var S={brand:[["Describe your goal","Type what you need; AI builds a structured brief."],["Get matched","Review ranked creators and AI-assisted options."],["Collaborate","Track drafts, comment and approve in one place."],["Pay &amp; license","Release escrow and receive usage rights instantly."]],
+creator:[["Build your profile","Showcase your portfolio, style and rates."],["Receive matches","Get briefs that fit your skills and audience."],["Create with AI","Use the studio to draft, iterate and polish faster."],["Get paid fast","Approval triggers payout, with disclosure handled."]]};
+function show(k){document.getElementById("steps").innerHTML=S[k].map(function(s){return '<div class="card step"><h3>'+s[0]+'</h3><p>'+s[1]+'</p></div>'}).join("")}
+document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){document.querySelectorAll(".tabs button").forEach(function(x){x.classList.remove("on")});b.classList.add("on");show(b.dataset.t)}});
+show("brand");
+document.getElementById("fs").onclick=function(){var f=document.getElementById("demoFrame");(f.requestFullscreen||f.webkitRequestFullscreen).call(f)};
+</script>
+</body>
+</html>
